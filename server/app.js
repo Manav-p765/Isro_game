@@ -14,6 +14,10 @@ app.use(express.json());
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "../clients/views"));
 
+app.get("/", (req,res) =>{
+  res.render("index.ejs");
+})
+
 app.get("/login", (req, res) => {
   res.render("users/login"); 
 });
