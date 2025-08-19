@@ -1,0 +1,53 @@
+.hero-section {
+  background: url('/images/ISRO.jpg') no-repeat center center;
+  background-size: cover;
+  height: 100vh;
+  position: relative;
+  color: white;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); 
+  z-index: 1;
+}
+
+.hero-section .content {
+  position: relative;
+  margin-bottom: 150px;
+  z-index: 2;
+}
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.hero-section .hero-title,
+.hero-section .hero-subtitle,
+.hero-section .hero-btn {
+  opacity: 0; /* start invisible */
+  animation: fadeSlideUp 1s ease forwards;
+}
+
+.hero-section .hero-title {
+  animation-delay: 0.2s;
+}
+
+.hero-section .hero-subtitle {
+  animation-delay: 0.5s;
+}
+
+.hero-section .hero-btn {
+  animation-delay: 0.8s;
+}
+
