@@ -10,6 +10,9 @@ import flash from "connect-flash";
 import { request } from "http";
 import passport from "passport";
 import LocalStrategy from "passport-local";
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import path from 'path';
 
 // Your own files (make sure to include the .js extension in ES Modules!)
 import userRoute from "./routes/user.js";
