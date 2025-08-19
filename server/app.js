@@ -35,10 +35,13 @@ app.use(methodOverride("_method"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+
 // Views setup (pointing to clients/views)
 app.engine("ejs", ejsmate); // optional, gives layout/partials support
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "../clients/views"));
+app.set("views", path.join(__dirname, "../clients/views")); 
+app.use(express.static(path.join(__dirname, "../clients/public")));
+
 
 // Passport (commented for now until you configure it)
 // app.use(passport.initialize());
