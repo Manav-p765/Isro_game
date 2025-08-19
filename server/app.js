@@ -10,18 +10,30 @@ import flash from "connect-flash";
 import { request } from "http";
 import passport from "passport";
 import LocalStrategy from "passport-local";
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-import path from 'path';
 
 // Your own files (make sure to include the .js extension in ES Modules!)
 import userRoute from "./routes/user.js";
 import User from "./models/user.js";
 
-dotenv.config();
+const dbUrl = process.env.ATLASURL;
+
+//mongoose connection setup
+main()
+    .then(() => {
+        console.log("connection was successful");
+    })
+    .catch((err) => {
+        console.log(err)
+    });
+
+async function main() {
+    await mongoose.connect(dbUrl);
+};
+
+
 const app = express();
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
 
 app.use(cors());
 app.use(methodOverride("_method"));
