@@ -41,6 +41,23 @@ app.use(methodOverride("_method"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// Session middleware
+app.use(
+  session({
+    secret: "supersecretkey",   // use a strong secret in production (from .env)
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: process.env.ATLASURL,
+      touchAfter: 24 * 3600 // reduce writes, update only once in 24h
+    }),
+    cookie: {
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24 // 1 day
+    }
+  })
+);
+
 app.use(passport.initialize());
 app.use(passport.session());
 

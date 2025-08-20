@@ -1,7 +1,7 @@
 import User from "../models/user.js";
 
 export const userSignup = async (req, res) => {
-    res.render("../views/users/signup.ejs");
+    res.render("../clients/views/users/signup.ejs");
 };
 
 export const userSignPost = async (req, res) => {
